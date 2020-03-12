@@ -1,0 +1,28 @@
+#include<graphics.h> 
+#include<mmsystem.h>
+#include<string>
+#pragma commend(lib,"winmm.lib")
+
+using namespace std;
+
+class Plane{
+public:
+	double x;
+	double y;
+	double life;
+	double score;
+	double tech;
+};
+
+void fly() {
+	IMAGE hero1;
+	loadimage(&hero1, ("H1"), 267, 200);
+	while (1) {
+		
+	}
+}
+
+int main() {
+	initgraph(480, 680);//创建一个480像素×680像素的画布
+	return 0;
+}
