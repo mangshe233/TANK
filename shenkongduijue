@@ -16,7 +16,7 @@ public:
 
 void fly() {
 	IMAGE hero1;
-	loadimage(&hero1, ("H1"), 267, 200);
+	loadimage(&hero1, ("H1"), 267, 200);//这些图片我以后会发到GitHub。These picture I will send on github 
 	while (1) {
 		
 	}
