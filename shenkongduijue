@@ -1,6 +1,7 @@
 #include<graphics.h> 
 #include<mmsystem.h>
-#include<string>
+#include<Windows.h>
+#include<WinUser.h>
 #pragma commend(lib,"winmm.lib")
 
 using namespace std;
@@ -14,15 +15,21 @@ public:
 	double tech;
 };
 
-void fly() {
-	IMAGE hero1;
-	loadimage(&hero1, ("H1"), 267, 200);//这些图片我以后会发到GitHub。These picture I will send on github 
+void hero_fly() {//获取鼠标坐标//Get the mouse coordinate
+	POINT p;
+	BOOL GetCursorPos(&p){
+		LPPOINT lpPoint;
+	}
+	IMAGE hero_1;
+
+	loadimage(&hero1, ("H1"), 267, 200);//easyX下的两个函数：loadimage和putimage
 	while (1) {
-		
+		putimage(p.x, p.y, &hero_1);
 	}
 }
 
 int main() {
-	initgraph(480, 680);//创建一个480像素×680像素的画布
+	initgraph(800, 900);//创建一个800像素×900像素的画布
+	hero_fly();
 	return 0;
 }
