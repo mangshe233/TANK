@@ -1,7 +1,12 @@
-#include<graphics.h> 
+##include<graphics.h> 
 #include<mmsystem.h>
 #include<Windows.h>
 #include<WinUser.h>
+#include<conio.h>
+#include<cstdlib>
+#include<ctime>
+
+#define random(a,b) (rand()%(b-a)+a)
 #pragma commend(lib,"winmm.lib")
 
 using namespace std;
@@ -15,21 +20,52 @@ public:
 	double tech;
 };
 
-void hero_fly() {//获取鼠标坐标//Get the mouse coordinate
+void hero_fly() {//获取鼠标坐标
 	POINT p;
 	BOOL GetCursorPos(&p){
 		LPPOINT lpPoint;
 	}
 	IMAGE hero_1;
 
-	loadimage(&hero1, ("H1"), 267, 200);//easyX下的两个函数：loadimage和putimage
+	loadimage(&hero1, ("H1"), 267, 200);
+	putimage(p.x, p.y, &hero_1);
+}
+
+void P35() {
+	IMAGE P35;
+	srand((int)time(0));
+	int i;
+	int P35_prob;
 	while (1) {
-		putimage(p.x, p.y, &hero_1);
+		i = random[0, 800];
+		P35_prob = random[0, 100];
+		if (P35_prob > 95 && P35_prob <= 100) {
+		}
+		else {
+			putimage(i, 0, &P35);
+		}
 	}
 }
 
 int main() {
-	initgraph(800, 900);//创建一个800像素×900像素的画布
-	hero_fly();
+	
+
+	int time_out = 1;//暂停值
+
+	char ch;
+	while (_kbhit()) {//检测是否有键按下
+		ch = getch()//获取键值
+		if (ch == 27) {//ESC的键值为27
+			time_out = 0;
+		}
+	}
+	while (1) {
+		initgraph(800, 900);//创建一个800像素×900像素的画布
+		hero_fly();
+		P35();
+		if (time_out == 0) {
+
+		}
+	}
 	return 0;
 }
