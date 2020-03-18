@@ -1,4 +1,3 @@
-##include<graphics.h> 
 #include<mmsystem.h>
 #include<Windows.h>
 #include<WinUser.h>
@@ -20,6 +19,14 @@ public:
 	double tech;
 };
 
+void bg1() {
+	IMAGE bg1;
+	loadimage(&bg1, ("bg1"), 800, 900);
+	while (1) {
+		putimage(0, 0, &bg1);
+	}
+}
+
 void hero_fly() {//获取鼠标坐标
 	POINT p;
 	BOOL GetCursorPos(&p){
@@ -31,18 +38,29 @@ void hero_fly() {//获取鼠标坐标
 	putimage(p.x, p.y, &hero_1);
 }
 
-void P35() {
+void enemy_1_fly() {
+	//P35的飞行方式
 	IMAGE P35;
-	srand((int)time(0));
-	int i;
+	srand(int(time)0);
+	Plane P35;
+	P35.x = random[0, 800];
+	P35.y = 0;
+	while (1) {
+		P35.y = P35.y + 3;
+		loadimage(&P35, ("P35"), 950, 713);
+		putimage(P35.x, P35.y, &P35);
+	}
+}
+
+void P35_point() {
 	int P35_prob;
 	while (1) {
-		i = random[0, 800];
 		P35_prob = random[0, 100];
 		if (P35_prob > 95 && P35_prob <= 100) {
 		}
 		else {
-			putimage(i, 0, &P35);
+			enemy_1_fly();
+			_sleep(2000);
 		}
 	}
 }
@@ -59,10 +77,11 @@ int main() {
 			time_out = 0;
 		}
 	}
+	initgraph(800, 900);//创建一个800像素×900像素的画布
 	while (1) {
-		initgraph(800, 900);//创建一个800像素×900像素的画布
+		bg1();
 		hero_fly();
-		P35();
+		P35_point();
 		if (time_out == 0) {
 
 		}
