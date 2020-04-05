@@ -1,0 +1,94 @@
+#include<iostream>
+#include<fstream>
+#include<cstdlib>
+#include<ctime>
+#include<string>
+#include<iomanip>
+#include<Windows.h>
+
+using namespace std;
+
+int main() {
+	string yes_no;
+	string name;
+	string password;
+
+	cout << "欢迎来到荒野试炼" << endl;
+	_sleep(2000);
+
+	//注册账号
+	cout << "注册还是登录账号" << endl << "请输入‘注册’或‘登录’" << endl;
+	string sign_in_options;
+	cin >> sign_in_options;
+	if (sign_in_options == "注册") {
+		ofstream outfile("C:\\Users\\13601\\Desktop\\我的程序库\\游戏\\c++游戏\\player_information.txt", ios::app);
+		cout << "请输入你的角色昵称:";
+		cin >> name;
+		outfile << name;
+		cout << "请输入你的密码:";
+		cin >> password;
+		outfile << password;
+		cout << "处理中..." << endl << endl;
+		_sleep(2000);
+		cout << "角色创建成功" << endl;
+	}
+	if (sign_in_options == "登录") {
+		cout << "请输入角色密码:";
+		cin >> password;
+		ifstream readfile("C:\Users\13601\Desktop\我的程序库\游戏\c++游戏\\player_information.txt");
+		char buff[1024];
+		while (readfile.getline(buff, 1024)) {
+		}
+		string::size_type sign_in_password;
+		sign_in_password = buff.find(password);
+		if (sign_in_password == string::npos) {
+			cout << "密码错误" << endl;
+		}
+		else {
+			cout << "登陆成功" << endl; 
+		}
+	}
+
+	cout << "是否进入新手教程" << endl << "请输入‘是’或‘否’" << endl;
+	cin >> yes_no;
+	//新手教程
+	if (yes_no == "是") {
+		cout << "进入新手教程" << endl;
+		_sleep(1000);
+		cout << "当系统出现选择时，请输入系统给出的条件，输入完成后按Enter键确定" << endl;
+		cout << "不得输入系统没有给出的条件，否则判定错误" << endl;
+		cout << "如果想调出角色参数，请按Q键" << endl;
+		cout << "如果想调出背包中的物品，请按E键，并输入想要调出的物品的名字" << endl;
+		cout << "手上拿的东西有两件，可按1和2键切换" << endl;
+		cout << "普通攻击按H键，一技能按J键，二技能按K键，大招按L键" << endl;
+		cout << "此游戏为RPG回合制游戏，打完一回合是请按Enter键进行下一回合" << endl;
+		cout << "Enter键正式进入游戏" << endl << endl;
+		_sleep(3000);
+	}
+
+	//武器变量
+	string weapon1;
+	string weapon2;
+	string weapon3;
+
+	//背包列表
+	char bag[5][4];
+
+	//进入人机对战
+	cout << "天灾军团：复活吧，骷髅军团。哈哈哈..." << endl << endl;
+	_sleep(1000);
+	cout << "系统：通过攻击键打败骷髅兵吧！" << endl;
+	_sleep(500);
+	weapon1 = "铁剑";
+	cout << "系统：给予" << name << "一把" ;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_GREEN);
+	cout << weapon1;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	_sleep(1000);
+	cout << setw(40);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED);
+	cout << "<>" << endl;
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_BLUE);
+	cout << "系统：骷髅兵出现了，快去打败他" << endl;
+	return 0;
+}
